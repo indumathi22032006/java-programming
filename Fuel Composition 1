@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class FuelConsumption {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: Liters of diesel and distance in km
+
+        double liters = scanner.nextDouble();
+
+        double distance = scanner.nextDouble();
+
+        // Validate inputs
+
+        if (liters <= 0 || distance <= 0) {
+
+            System.out.println("Invalid Input");
+
+            return;
+
+        }
+
+        // Calculate fuel consumption (liters/100km)
+
+        double litersPer100KM = (liters / distance) * 100;
+
+        // Convert km to miles and liters to gallons
+
+        double distanceInMiles = distance * 0.6214;
+
+        double fuelInGallons = liters * 0.2642;
+
+        // Calculate miles per gallon
+
+        double milesPerGallon = distanceInMiles / fuelInGallons;
+
+        // Output results
+
+        System.out.printf("Liters/100KM\n%.2f\n", litersPer100KM);
+
+        System.out.printf("Miles/gallons\n%.2f", milesPerGallon);
+
+    }
+
+}
