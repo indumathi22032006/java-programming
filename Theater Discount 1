@@ -1,0 +1,81 @@
+import java.util.Scanner;
+
+public class TheaterDiscount {
+
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        // Input
+
+        int tickets = scanner.nextInt();
+
+        char refreshment = scanner.next().charAt(0);
+
+        char coupon = scanner.next().charAt(0);
+
+        char ticketType = scanner.next().charAt(0);
+
+        // Validate ticket count
+
+        if (tickets < 5 || tickets > 40) {
+
+            System.out.println("Invalid Input");
+
+            return;
+
+        }
+
+        // Ticket cost
+
+        double pricePerTicket = 0;
+
+        if (ticketType == 'k') {
+
+            pricePerTicket = 75;
+
+        } else if (ticketType == 'q') {
+
+            pricePerTicket = 150;
+
+        } else {
+
+            System.out.println("Invalid Input");
+
+            return;
+
+        }
+
+        double totalCost = tickets * pricePerTicket;
+
+        // Apply 10% discount for bulk booking
+
+        if (tickets > 20) {
+
+            totalCost -= totalCost * 0.10;
+
+        }
+
+        // Apply 2% discount for coupon
+
+        if (coupon == 'y') {
+
+            totalCost -= totalCost * 0.02;
+
+        }
+
+        // Add refreshments if opted
+
+        if (refreshment == 'y') {
+
+            totalCost += tickets * 50;
+
+        }
+
+        // Output with 2 decimal places
+
+        System.out.printf("Ticket cost:%.2f", totalCost);
+
+    }
+
+}
